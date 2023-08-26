@@ -4,15 +4,19 @@ This is a basic solidity smart contract for creating a customized token named "A
 
 ## Description
 
-The given code is an example of a Solidity-written smart contract that generates a token named "APACHE" with the symbol "APC" on the Ethereum network. Let's examine its functions in detail:
+The provided Solidity smart contract, named MyToken, is an implementation of an ERC20 token with some additional functionalities. 
 
-Contract Inheritance: The contract is descended from the ERC20, ERC20Burnable, and Ownable contracts. These contracts, which are a part of the OpenZeppelin library, offer the ability to produce ERC20 tokens, allow token burning, and control ownership permissions.
+Name and Symbol: The contract inherits from the OpenZeppelin ERC20 contract, which is a widely used standard for fungible tokens on the Ethereum blockchain. The constructor initializes the token with the name "APACHE" and the symbol "APC".
 
-Constructor: Upon contract deployment, the constructor function is called. By invoking the ERC20 contract's constructor with the parameters "APACHE" as the name and "APC" as the symbol, it initialises the token. It also creates 1 token, which is represented as 1 * 10 ** decimals(), and assigns it to the deployer's address (i.e., msg.sender).
+Access Control: The contract also inherits from the Ownable contract, which provides basic access control functionality. This means that certain functions can only be executed by the contract owner.
 
-The contract owner (deployer) may mint more tokens by using the mint function. It requires the two parameters amount and to, which provide the address and quantity of new tokens to be issued, respectively. The onlyOwner modifier, which is inherited from the Ownable contract, limits who can invoke the function to the contract owner only. Internally, the new coins are created and assigned to the designated address using the _mint function from the ERC20 contract.
+Minting: The mint function allows the contract owner to create and assign new tokens to a specified address. This function can be used to increase the token supply. Only the contract owner can call this function due to the onlyOwner modifier.
 
-This contract is for the creation of a token named "APACHE" with the symbol "APC" and an initial supply of one token. Additional tokens may be minted by the contract owner if needed.
+Burning: The burn function enables any token holder to burn (destroy) a specified amount of their own tokens. This action permanently removes the burned tokens from circulation.
+
+Transferring: The transfer function is an override of the ERC20 contract's standard transfer function. It allows users to transfer tokens from their own account to another account. The override adds a requirement that the recipient's address cannot be the zero address (address(0)), ensuring that tokens are not sent to a non-existent address.
+
+Overall, this contract provides basic ERC20 token functionality along with minting, burning, and transferring capabilities. The ownership aspect ensures that only the contract owner has the ability to mint new tokens, adding an additional layer of control over the token's issuance.
 
 ## Getting Started
 
@@ -64,9 +68,9 @@ node scripts/deploy.js
 
 ## Authors
 
-Aditya Raju
+Ashwath R
 
-adrocxsmma@gmail.com
+ashwathraju85@gmail.com
 
 
 ## License
