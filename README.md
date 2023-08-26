@@ -16,7 +16,6 @@ Burning: The burn function enables any token holder to burn (destroy) a specifie
 
 Transferring: The transfer function is an override of the ERC20 contract's standard transfer function. It allows users to transfer tokens from their own account to another account. The override adds a requirement that the recipient's address cannot be the zero address (address(0)), ensuring that tokens are not sent to a non-existent address.
 
-Overall, this contract provides basic ERC20 token functionality along with minting, burning, and transferring capabilities. The ownership aspect ensures that only the contract owner has the ability to mint new tokens, adding an additional layer of control over the token's issuance.
 
 ## Getting Started
 
